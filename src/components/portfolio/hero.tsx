@@ -11,7 +11,7 @@ import { ArrowRightIcon } from "lucide-react"
 
 import { Reveal } from "./reveal"
 
-const heroRoles = ["AI ARCHITECT", "VIDEOGRAPHER", "DESIGNER", "STRATEGIST"]
+const heroRoles = ["AI ENGINEER", "FILM EDITOR", "PRODUCT DESIGNER", "RESEARCHER"]
 const roleCycleDelay = 4200
 const roleTransition = { duration: 1.05, ease: [0.22, 1, 0.36, 1] } as const
 
@@ -26,10 +26,10 @@ export function Hero() {
         </Reveal>
         <Reveal className="hero-context-wrap" delay={0.12}>
           <h1 id="hero-title" className="hero-statement">
-            Zach Skov Grzeskowiak builds AI infrastructure, media intelligence,
-            and product systems.
+            Zach Skov Grzeskowiak builds AI products, media tools, and the
+            systems behind them.
           </h1>
-          <p className="hero-context-line">Compact systems for signal, story, and distribution.</p>
+          <p className="hero-context-line">An independent practice. Research, build, ship.</p>
           <a className="hero-cta" href="#contact">
             Start a conversation
             <ArrowRightIcon aria-hidden="true" data-icon="inline-end" strokeWidth={1.6} />

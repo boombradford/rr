@@ -24,8 +24,8 @@ export function ContactSection() {
               Available for the next system.
             </h2>
             <p className="contact-lead">
-              AI infrastructure, media intelligence, and product tooling for teams
-              shipping real work.
+              Open to project work and collaborations with founders and teams
+              shipping real products.
             </p>
 
             <div className="contact-actions">

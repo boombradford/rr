@@ -29,7 +29,7 @@ export const projects: Project[] = [
     feature: "wide",
     lane: "READ",
     description:
-      "An AI-powered RSS reader that summarizes articles and generates audio overviews for faster context.",
+      "An RSS reader that summarizes your feeds and turns them into audio overviews.",
     tags: ["RSS", "Summaries", "Audio AI"],
     scope: "Reader interface",
     status: "Live",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     category: "Music intelligence",
     lane: "LISTEN",
     description:
-      "A live music platform for upcoming releases, artist follows, Spotify saves, and recommendation loops.",
+      "A music platform that tracks upcoming releases, follows artists, and syncs your Spotify saves.",
     tags: ["Spotify", "Discovery", "Release Tracking"],
     scope: "Product system",
     status: "Live",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     category: "Archive intelligence",
     lane: "ARCHIVE",
     description:
-      "A dark research archive for anomalous phenomena, claims, source material, and speculative editorial systems.",
+      "A research archive for anomalous phenomena: the claims, the source material, and the evidence behind them.",
     tags: ["Archive", "Research", "Evidence"],
     scope: "Narrative system",
     status: "Live",
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     feature: "wide",
     lane: "WATCH",
     description:
-      "Cinematic editing, YouTube systems, AI-assisted production, and visual storytelling workflows.",
+      "Cinematic editing, YouTube production, and AI-assisted visual storytelling.",
     tags: ["Video", "AI Production", "Editorial"],
     scope: "Creative workflow",
     status: "Reel",

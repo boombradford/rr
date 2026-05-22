@@ -10,19 +10,19 @@ const studioLanes = [
   {
     key: "music",
     label: "Music",
-    detail: "Release intelligence, discovery loops, and listening tools.",
+    detail: "Release tracking, artist discovery, and listening tools.",
     href: "#project-wavereact",
   },
   {
     key: "archive",
     label: "Archive",
-    detail: "Research surfaces for strange media, claims, and signal.",
+    detail: "Research archives for anomalous media, claims, and source material.",
     href: "#project-axiomera",
   },
   {
     key: "video",
     label: "Video",
-    detail: "Cinematic edits, story systems, and AI-assisted production.",
+    detail: "Cinematic editing, AI-assisted production, and visual storytelling.",
     href: "#project-video",
   },
 ]
