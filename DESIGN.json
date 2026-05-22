@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-22T00:00:00Z",
+  "title": "Design System: Zach Skov Grzeskowiak",
+  "extensions": {
+    "colorMeta": {
+      "ink-950": {
+        "role": "neutral",
+        "displayName": "Darkroom Ink",
+        "canonical": "oklch(5.1% 0.009 238)",
+        "tonalRamp": ["oklch(5.1% 0.009 238)", "oklch(7.4% 0.011 238)", "oklch(9.4% 0.012 238)", "oklch(12.2% 0.013 238)", "oklch(19% 0.012 238)", "oklch(32% 0.012 238)", "oklch(50% 0.01 238)", "oklch(72% 0.008 238)"]
+      },
+      "ink-900": { "role": "neutral", "displayName": "Ink 900", "canonical": "oklch(7.4% 0.011 238)" },
+      "ink-850": { "role": "neutral", "displayName": "Plate Ink", "canonical": "oklch(9.4% 0.012 238)" },
+      "ink-800": { "role": "neutral", "displayName": "Ink 800", "canonical": "oklch(12.2% 0.013 238)" },
+      "paper-100": {
+        "role": "neutral",
+        "displayName": "Warm Archive Paper",
+        "canonical": "oklch(94.6% 0.018 83)",
+        "tonalRamp": ["oklch(40% 0.014 83)", "oklch(52% 0.016 83)", "oklch(63% 0.017 83)", "oklch(73% 0.018 83)", "oklch(82.5% 0.015 83)", "oklch(88% 0.018 83)", "oklch(94.6% 0.018 83)", "oklch(98% 0.01 83)"]
+      },
+      "paper-200": { "role": "neutral", "displayName": "Paper 200", "canonical": "oklch(82.5% 0.015 83)" },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Faint Paper",
+        "canonical": "oklch(68% 0.016 83)",
+        "tonalRamp": ["oklch(22% 0.012 83)", "oklch(33% 0.014 83)", "oklch(45% 0.016 83)", "oklch(56% 0.016 83)", "oklch(68% 0.016 83)", "oklch(79% 0.015 83)", "oklch(88% 0.012 83)", "oklch(95% 0.008 83)"]
+      },
+      "border": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(19% 0.012 238)" },
+      "sage-300": {
+        "role": "primary",
+        "displayName": "Archive Sage",
+        "canonical": "oklch(73% 0.054 162)",
+        "tonalRamp": ["oklch(16% 0.02 162)", "oklch(26% 0.034 162)", "oklch(37% 0.046 162)", "oklch(49% 0.054 162)", "oklch(61% 0.056 162)", "oklch(73% 0.054 162)", "oklch(84% 0.04 162)", "oklch(93% 0.022 162)"]
+      },
+      "brass-300": {
+        "role": "secondary",
+        "displayName": "Editorial Brass",
+        "canonical": "oklch(76% 0.083 83)",
+        "tonalRamp": ["oklch(17% 0.03 83)", "oklch(28% 0.05 83)", "oklch(40% 0.068 83)", "oklch(52% 0.08 83)", "oklch(64% 0.085 83)", "oklch(76% 0.083 83)", "oklch(86% 0.06 83)", "oklch(94% 0.032 83)"]
+      },
+      "signal-300": {
+        "role": "tertiary",
+        "displayName": "Signal Cyan",
+        "canonical": "oklch(76.5% 0.078 206)",
+        "tonalRamp": ["oklch(17% 0.028 206)", "oklch(28% 0.046 206)", "oklch(40% 0.062 206)", "oklch(52% 0.073 206)", "oklch(64% 0.079 206)", "oklch(76.5% 0.078 206)", "oklch(86% 0.056 206)", "oklch(94% 0.03 206)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The cycling hero role word. Largest, most authored type on the page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and the contact closing line." },
+      "title": { "displayName": "Title", "purpose": "Project card titles." },
+      "body": { "displayName": "Body", "purpose": "Descriptions, the contact lead, the hero statement line. Capped near 75 characters." },
+      "label": { "displayName": "Label", "purpose": "Monospace uppercase kickers, lane labels, project metadata, badges." }
+    },
+    "shadows": [
+      { "name": "ambient-card", "value": "0 16px 48px color-mix(in oklch, oklch(5.1% 0.009 238) 20%, transparent)", "purpose": "Default lift for cards and composed surfaces (the --shadow-tight token)." },
+      { "name": "ambient-plate", "value": "0 28px 92px color-mix(in oklch, oklch(5.1% 0.009 238) 24%, transparent)", "purpose": "Deeper, softer shadow under the hero media plate and project card shells." },
+      { "name": "inset-highlight", "value": "inset 0 1px 0 color-mix(in oklch, oklch(94.6% 0.018 83) 5.5%, transparent)", "purpose": "Faint warm top edge on raised surfaces (nav, hero plate, cards)." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Default easing for state transitions and ambient drift." },
+      { "name": "ease-out", "value": "cubic-bezier(0.18, 0.92, 0.18, 1)", "purpose": "Decelerating curve for beams, scan lines, and reveals." },
+      { "name": "duration-fast", "value": "220ms", "purpose": "Hover and focus state changes." },
+      { "name": "duration-med", "value": "520ms", "purpose": "Card lifts, border-color shifts, scan sweeps." },
+      { "name": "duration-slow", "value": "1080ms", "purpose": "Reveal entrances and slow ambient motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "680px" },
+      { "name": "md", "value": "920px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single highest-emphasis action (the contact email link). Warm paper fill, dark ink text, pill shape, soft ambient shadow, an orbiting arrow.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-btn-primary\" href=\"#\"><span>zach@fluxninelabs.com</span><span class=\"ds-btn-orbit\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></span></a></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; display: flex; justify-content: center; } .ds-btn-primary { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.88rem; font-weight: 620; text-decoration: none; min-height: 3.1rem; padding: 0.34rem 0.38rem 0.34rem 1rem; border-radius: 999px; background: color-mix(in oklch, oklch(94.6% 0.018 83) 91%, transparent); border: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 72%, transparent); color: oklch(5.1% 0.009 238); transition: background 220ms cubic-bezier(0.32,0.72,0,1), transform 220ms cubic-bezier(0.32,0.72,0,1); } .ds-btn-primary:hover { background: color-mix(in oklch, oklch(94.6% 0.018 83) 91%, oklch(76% 0.083 83) 9%); transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid color-mix(in oklch, oklch(73% 0.054 162) 70%, transparent); outline-offset: 4px; } .ds-btn-orbit { display: inline-flex; align-items: center; justify-content: center; width: 1.92rem; height: 1.92rem; border-radius: 999px; background: color-mix(in oklch, oklch(5.1% 0.009 238) 8%, transparent); border: 1px solid color-mix(in oklch, oklch(5.1% 0.009 238) 8%, transparent); transition: transform 520ms cubic-bezier(0.32,0.72,0,1); } .ds-btn-primary:hover .ds-btn-orbit { transform: translate3d(0.12rem,-0.08rem,0) scale(1.035); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The navigation's resting action style. Transparent, faint-paper text, pill shape; hover raises a faint fill and shifts text to full paper.",
+      "html": "<div class=\"ds-stage\"><button class=\"ds-btn-ghost\">Work</button></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; display: flex; justify-content: center; } .ds-btn-ghost { font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.84rem; font-weight: 520; min-height: 2.875rem; padding-inline: 0.82rem; border-radius: 999px; background: transparent; border: 1px solid transparent; color: color-mix(in oklch, oklch(94.6% 0.018 83) 68%, transparent); cursor: pointer; transition: background 220ms cubic-bezier(0.32,0.72,0,1), border-color 220ms cubic-bezier(0.32,0.72,0,1), color 220ms cubic-bezier(0.32,0.72,0,1); } .ds-btn-ghost:hover { background: color-mix(in oklch, oklch(94.6% 0.018 83) 4.5%, transparent); border-color: color-mix(in oklch, oklch(94.6% 0.018 83) 7%, transparent); color: oklch(94.6% 0.018 83); } .ds-btn-ghost:focus-visible { outline: 2px solid color-mix(in oklch, oklch(73% 0.054 162) 70%, transparent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Label Badge",
+      "kind": "chip",
+      "refersTo": "badge-label",
+      "description": "The working badge: a transparent, borderless monospace label for index numbers, lane names, status, year, and tags.",
+      "html": "<div class=\"ds-stage\"><span class=\"ds-badge-label\">Live</span></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; display: flex; justify-content: center; } .ds-badge-label { display: inline-flex; align-items: center; font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace; font-size: 0.6875rem; font-weight: 610; line-height: 1; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: oklch(66% 0.017 83); background: transparent; border: 0; padding: 0; }"
+    },
+    {
+      "name": "Hero CTA",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The single quiet primary action in the hero: a text link with a sliding right arrow. Internal navigation, so it uses arrow-right, never the external arrow-up-right.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-hero-cta\" href=\"#\">Start a conversation<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; display: flex; justify-content: center; } .ds-hero-cta { display: inline-flex; align-items: center; gap: 0.34rem; min-height: 2.75rem; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.875rem; font-weight: 580; text-decoration: none; color: color-mix(in oklch, oklch(94.6% 0.018 83) 72%, transparent); transition: color 220ms cubic-bezier(0.32,0.72,0,1); } .ds-hero-cta svg { transition: transform 220ms cubic-bezier(0.18,0.92,0.18,1); } .ds-hero-cta:hover { color: oklch(94.6% 0.018 83); } .ds-hero-cta:hover svg { transform: translateX(0.18rem); } .ds-hero-cta:focus-visible { outline: 2px solid color-mix(in oklch, oklch(73% 0.054 162) 70%, transparent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Studio Lane",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "One bordered cell of the studio index ledger. A link into its matching project; hover lifts the cell, draws a top gleam, and extends a project-tone meter.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-lane\" href=\"#\"><span class=\"ds-lane-gleam\"></span><span class=\"ds-lane-label\">Code</span><p class=\"ds-lane-detail\">Compact AI systems, automations, and interfaces that ship.</p><span class=\"ds-lane-meter\"></span></a></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; } .ds-lane { --tone: oklch(76.5% 0.078 206); position: relative; display: block; max-width: 18rem; min-height: 7.75rem; padding: 1.4rem; text-decoration: none; color: inherit; border: 0; border-top: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 5%, transparent); border-bottom: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 5%, transparent); transition: color 520ms cubic-bezier(0.32,0.72,0,1); } .ds-lane-gleam { position: absolute; top: 0; left: 0; right: 0; height: 1px; opacity: 0; transform: translate3d(-60%,0,0); background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--tone) 32%, transparent), transparent); transition: opacity 520ms cubic-bezier(0.32,0.72,0,1), transform 1080ms cubic-bezier(0.32,0.72,0,1); } .ds-lane:hover .ds-lane-gleam { opacity: 1; transform: translate3d(60%,0,0); } .ds-lane-label { display: inline-block; font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace; font-size: 0.75rem; font-weight: 720; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in oklch, oklch(94.6% 0.018 83) 82%, var(--tone) 18%); } .ds-lane-detail { margin: 0.75rem 0 0; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.94rem; line-height: 1.52; color: color-mix(in oklch, oklch(94.6% 0.018 83) 72%, transparent); } .ds-lane-meter { display: block; margin-top: 1rem; width: 7rem; height: 1px; opacity: 0.2; transform: scaleX(0.36); transform-origin: left; background: linear-gradient(90deg, var(--tone), transparent); transition: opacity 520ms cubic-bezier(0.32,0.72,0,1), transform 1080ms cubic-bezier(0.18,0.92,0.18,1); } .ds-lane:hover .ds-lane-meter { opacity: 0.72; transform: scaleX(1); } .ds-lane:focus-visible { outline: 2px solid color-mix(in oklch, oklch(73% 0.054 162) 70%, transparent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The signature surface: a framed shell wrapping a 16:9 media plate, monospace metadata, an editorial title, description, and tags. Hover lifts the card and brightens the project-tone hairline.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-card\" href=\"#\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><div class=\"ds-card-meta\"><span class=\"ds-card-tag\">02</span><span class=\"ds-card-tag\">LISTEN</span></div><h3 class=\"ds-card-title\">WaveReact</h3><p class=\"ds-card-desc\">A live music platform for upcoming releases, artist follows, and recommendation loops.</p><div class=\"ds-card-foot\"><span>Open Platform</span></div></div></a></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; } .ds-card { --tone: oklch(76% 0.083 83); display: block; max-width: 24rem; padding: 0.45rem; text-decoration: none; border-radius: 2rem; background: color-mix(in oklch, oklch(7.4% 0.011 238) 92%, var(--tone) 8%); border: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 4.8%, var(--tone) 5.2%); box-shadow: 0 24px 80px color-mix(in oklch, oklch(5.1% 0.009 238) 18%, transparent), inset 0 1px 0 color-mix(in oklch, oklch(94.6% 0.018 83) 4.5%, transparent); transition: border-color 520ms cubic-bezier(0.32,0.72,0,1), transform 520ms cubic-bezier(0.32,0.72,0,1); } .ds-card:hover { transform: translateY(-4px); border-color: color-mix(in oklch, oklch(94.6% 0.018 83) 12%, var(--tone) 40%); } .ds-card-media { aspect-ratio: 16/9; border-radius: 1.17rem; background: radial-gradient(circle at 30% 20%, color-mix(in oklch, var(--tone) 14%, transparent), transparent 60%), oklch(9.4% 0.012 238); border: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 7%, transparent); } .ds-card-body { padding: 1.35rem 1.1rem 1.1rem; } .ds-card-meta { display: flex; gap: 0.6rem; } .ds-card-tag { font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.04em; color: oklch(66% 0.017 83); } .ds-card-title { margin: 0.6rem 0 0; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 1.5rem; font-weight: 680; line-height: 1.05; color: oklch(94.6% 0.018 83); } .ds-card-desc { margin: 0.6rem 0 0; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.62; color: color-mix(in oklch, oklch(94.6% 0.018 83) 72%, transparent); } .ds-card-foot { margin-top: 1.1rem; font-size: 0.82rem; font-weight: 660; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; color: color-mix(in oklch, oklch(94.6% 0.018 83) 72%, transparent); transition: color 220ms cubic-bezier(0.32,0.72,0,1), transform 220ms cubic-bezier(0.32,0.72,0,1); } .ds-card:hover .ds-card-foot { color: oklch(94.6% 0.018 83); transform: translateX(0.15rem); } .ds-card:focus-visible { outline: 2px solid color-mix(in oklch, oklch(73% 0.054 162) 70%, transparent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Floating Nav",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "A pill-shaped sticky bar with a backdrop blur, a brand seal on the left and ghost-button anchors on the right.",
+      "html": "<div class=\"ds-stage\"><nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-nav-seal\"></span><span class=\"ds-nav-name\">zach skov</span></a><div class=\"ds-nav-actions\"><a href=\"#\">Work</a><a href=\"#\">Contact</a></div></nav></div>",
+      "css": ".ds-stage { background: oklch(5.1% 0.009 238); padding: 2.5rem; } .ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 4.15rem; padding: 0.52rem 0.9rem; border-radius: 999px; background: color-mix(in oklch, oklch(5.1% 0.009 238) 74%, transparent); border: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 8.5%, transparent); box-shadow: 0 22px 70px color-mix(in oklch, oklch(5.1% 0.009 238) 28%, transparent), inset 0 1px 0 color-mix(in oklch, oklch(94.6% 0.018 83) 7.5%, transparent); backdrop-filter: blur(18px) saturate(1.18); } .ds-nav-brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; } .ds-nav-seal { width: 2.7rem; height: 2.7rem; border-radius: 999px; background: color-mix(in oklch, oklch(9.4% 0.012 238) 82%, oklch(73% 0.054 162) 18%); border: 1px solid color-mix(in oklch, oklch(94.6% 0.018 83) 8%, oklch(73% 0.054 162) 12%); } .ds-nav-name { font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.96rem; font-weight: 640; color: oklch(94.6% 0.018 83); } .ds-nav-actions { display: flex; gap: 0.7rem; } .ds-nav-actions a { font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; font-size: 0.84rem; font-weight: 520; text-decoration: none; color: color-mix(in oklch, oklch(94.6% 0.018 83) 68%, transparent); padding: 0.6rem 0.6rem; transition: color 220ms cubic-bezier(0.32,0.72,0,1); } .ds-nav-actions a:hover { color: oklch(94.6% 0.018 83); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signal Darkroom",
+    "overview": "The interface behaves like a late-night room where raw signal is developed into composed work. Surfaces are near-black, precise lines divide space, and a single cinematic instrument (the hero media plate) glows at the center. It is a workspace, not a showcase: the visitor reads it the way they would read a quiet archive, calmly and in order. The page is organized as four movements (hero, studio index, selected work, contact); structure is left-aligned and editorial with asymmetric balance, and the hero is the single centered, visual-first movement. Motion is slow and singular: one confident load moment, restrained ambient drift, and hover detail that resolves rather than competes.",
+    "keyCharacteristics": [
+      "Tinted near-black surfaces; depth from tonal layering plus soft ambient shadow.",
+      "One restrained color strategy: three accents, each owning a single domain.",
+      "Editorial grotesk display type; a monospace voice reserved for technical labels.",
+      "Quiet at rest, alive on interaction: components hold still until hovered, then respond with slow, precise motion.",
+      "Reduced-motion is a first-class path, not an afterthought."
+    ],
+    "rules": [
+      { "name": "The Three-Lane Rule", "body": "Sage, brass, and signal cyan each own one domain (system / editorial / analytical). They are never swapped or blended decoratively. A project's tone and its studio lane's tone always agree.", "section": "colors" },
+      { "name": "The No-Pure-Black Rule", "body": "#000 and #fff are forbidden. Every neutral is tinted toward ink hue 238 or paper hue 83; every highlight and shadow is a color-mix against foreground or scrim, never a raw white or black.", "section": "colors" },
+      { "name": "The Mono-Label Rule", "body": "The monospace voice is reserved for small uppercase labels, kickers, project metadata, and technical detail lines. It never sets body copy and never sets a heading.", "section": "typography" },
+      { "name": "The Tight-Display Rule", "body": "Large display type carries negative tracking (-0.02em on the hero word, -0.015em on headlines); small uppercase labels carry positive tracking (+0.06em). Tracking is always deliberate, never left at a no-op default.", "section": "typography" },
+      { "name": "The Soft-Shadow Rule", "body": "Shadows are always large-radius, low-opacity, and near-black-tinted. Hard, dark, or tight drop shadows are forbidden. When in doubt, add a tonal surface step instead of a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do author every neutral, highlight, and shadow as an OKLCH value or a color-mix against foreground / scrim.",
+      "Do keep the three accents in their lanes: sage for system intelligence and archive, brass for video / music / editorial warmth, signal cyan for data and analytical detail.",
+      "Do reserve the monospace voice for small uppercase labels and metadata; set everything else in Bricolage Grotesque.",
+      "Do build depth from tonal surface steps first, soft ambient shadow second.",
+      "Do keep motion slow and singular: one confident hero load moment, hover detail that resolves.",
+      "Do give every interactive element a 44px target, a visible focus ring, and a reduced-motion path.",
+      "Do keep body measure under 75 characters and large display type on tight negative tracking."
+    ],
+    "donts": [
+      "Don't introduce cyberpunk clutter, neon dashboards, or fake terminal theatrics.",
+      "Don't add default SaaS proof strips, hero-metric templates, or generic icon-card grids.",
+      "Don't use glassmorphism for decoration; the one nav backdrop blur is the only sanctioned blur.",
+      "Don't reach for purple-blue AI gradients, rainbow gradients, or background-clip: text gradient text.",
+      "Don't let the page read like a template with project links swapped in.",
+      "Don't use #000, #fff, hard drop shadows, or border-left / border-right greater than 1px as a colored stripe.",
+      "Don't use em dashes in copy; use commas, colons, semicolons, periods, or parentheses.",
+      "Don't stack competing ambient animations in the hero; one drift layer is the ceiling."
+    ]
+  }
+}
