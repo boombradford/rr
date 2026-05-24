@@ -100,7 +100,6 @@ function HeroStudioPlate({ reduceMotion }: HeroStudioPlateProps) {
       <motion.div className="hero-title-plane" style={reduceMotion ? undefined : { x: titleX, y: titleY }}>
         <HeroRoleCycle reduceMotion={reduceMotion} />
       </motion.div>
-      <p className="hero-studio-label">AI systems / video / music / archives</p>
     </motion.div>
   )
 }

@@ -12,6 +12,8 @@ import path from "node:path"
 import process from "node:process"
 import ts from "typescript"
 
+import { buildNotes } from "./build-notes.mjs"
+
 const root = process.cwd()
 const srcDir = path.join(root, "src")
 const distDir = path.join(root, "dist")
@@ -82,6 +84,8 @@ const html = sourceHtml.replace(
 
 writeFileSync(path.join(distDir, "index.html"), html)
 console.log(`static build complete (${collectSourceFiles(srcDir).length} modules)`)
+
+buildNotes({ root, distDir, buildVersion })
 
 function collectSourceFiles(directory) {
   return readdirSync(directory)

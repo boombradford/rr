@@ -21,6 +21,9 @@ export function SiteHeader() {
             <a href="#work">Work</a>
           </Button>
           <Button asChild size="sm" variant="ghost">
+            <a href="/notes/">Notes</a>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
             <a href="#contact">Contact</a>
           </Button>
         </div>

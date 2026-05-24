@@ -11,6 +11,7 @@ colors:
   sage-300: "oklch(73% 0.054 162)"
   brass-300: "oklch(76% 0.083 83)"
   signal-300: "oklch(76.5% 0.078 206)"
+  clay-300: "oklch(73% 0.066 38)"
   muted-foreground: "oklch(68% 0.016 83)"
   border: "oklch(19% 0.012 238)"
 typography:
@@ -98,16 +99,19 @@ This system explicitly rejects cyberpunk clutter, neon dashboards, fake terminal
 
 ## 2. Colors
 
-A restrained, systemized palette: tinted near-black neutrals carry the surface, and three muted accents each own one domain. All tokens are authored in OKLCH in `src/index.css`; that file is the source of truth.
+A restrained, systemized palette: tinted near-black neutrals carry the surface, and four muted accents each own one domain. All tokens are authored in OKLCH in `src/index.css`; that file is the source of truth.
 
 ### Primary
 - **Archive Sage** (`oklch(73% 0.054 162)`): The primary accent. System intelligence, archive surfaces, calm interaction lift, AXIOMERA's project tone, the focus ring. Muted and desaturated, never a bright green.
 
 ### Secondary
-- **Editorial Brass** (`oklch(76% 0.083 83)`): Editorial warmth. Video and music domains, the WaveReact and Video project tones, the closing-CTA emphasis, hairline glints.
+- **Editorial Brass** (`oklch(76% 0.083 83)`): Editorial warmth. The Video project tone, the closing-CTA emphasis, hairline glints.
 
 ### Tertiary
 - **Signal Cyan** (`oklch(76.5% 0.078 206)`): The analytical note. Data traces, scan points, Kevin / news intelligence, the Code studio lane. Small technical details only, never a surface.
+
+### Quaternary
+- **Studio Clay** (`oklch(73% 0.066 38)`): Analog warmth. The Music studio lane, WaveReact's project tone, vinyl-crate register. A muted clay, never a saturated terracotta.
 
 ### Neutral
 - **Darkroom Ink** (`oklch(5.1% 0.009 238)`): The base background. A near-black tinted toward cool ink, never pure black.
@@ -117,7 +121,7 @@ A restrained, systemized palette: tinted near-black neutrals carry the surface, 
 - **Hairline** (`oklch(19% 0.012 238)`): Borders and dividers. Most lines are built by mixing paper into the surface at 5-12%.
 
 ### Named Rules
-**The Three-Lane Rule.** Sage, brass, and signal cyan each own one domain (system / editorial / analytical). They are never swapped or blended decoratively. A project's `--project-tone` and its studio lane's `--lane-tone` always agree.
+**The Four-Lane Rule.** Sage, brass, signal cyan, and clay each own one domain (archive / video / code-and-news / music). They are never swapped or blended decoratively. A project's `--project-tone` and its studio lane's `--lane-tone` always agree.
 
 **The No-Pure-Black Rule.** `#000` and `#fff` are forbidden. Every neutral is tinted toward ink hue 238 or paper hue 83; every highlight and shadow is a `color-mix` against `--foreground` or `--scrim`, never a raw white or black.
 

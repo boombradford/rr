@@ -1,0 +1,37 @@
+title: "Zach Skov Grzeskowiak: Notes"
+description: Working notes archive for skovie.bio.
+
+media:
+  input: public/img/notes
+  output: /img/notes
+
+content:
+  - name: notes
+    label: Notes
+    path: content/notes
+    type: collection
+    format: yaml-frontmatter
+    extension: md
+    filename: "{fields.title|slugify}.md"
+    view:
+      fields: [title, date, summary]
+      sort:
+        - field: date
+          direction: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        description: A short summary shown on the notes index and in the RSS feed.
+      - name: body
+        label: Body
+        type: rich-text
+        required: true

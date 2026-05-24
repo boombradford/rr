@@ -16,7 +16,7 @@ export type Project = {
   scope: string
   status: string
   tags: string[]
-  tone: "sage" | "brass" | "signal"
+  tone: "sage" | "brass" | "signal" | "clay"
   title: string
   year: string
 }
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     scope: "Product system",
     status: "Live",
     year: "2026",
-    tone: "brass",
+    tone: "clay",
     cta: "Open Platform",
     href: "https://wavereact.online",
     image: {
