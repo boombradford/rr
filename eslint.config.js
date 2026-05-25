@@ -6,7 +6,10 @@ import reactHooks from "eslint-plugin-react-hooks"
 import reactRefresh from "eslint-plugin-react-refresh"
 
 export default [
-  { ignores: ["dist", "node_modules"] },
+  // `._*` are macOS AppleDouble sidecar files that get created on external
+  // (non-HFS+) drives. They're binary metadata, not source, but their `._foo.ts`
+  // names slip past the file-pattern match and break the lint run.
+  { ignores: ["dist", "node_modules", "**/._*", "output"] },
   js.configs.recommended,
   {
     files: ["**/*.{ts,tsx}"],

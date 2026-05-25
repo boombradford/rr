@@ -8,6 +8,13 @@ type RevealProps = {
   id?: string
 }
 
+// Hoist motion config so we don't allocate fresh objects per Reveal instance per
+// render — framer-motion does identity checks on these, and the values never change.
+const revealInitial = { opacity: 0, y: 28, scale: 0.992 } as const
+const revealWhileInView = { opacity: 1, y: 0, scale: 1 } as const
+const revealViewport = { once: true, margin: "-12% 0px -10%" } as const
+const revealEase = [0.16, 1, 0.3, 1] as const
+
 export function Reveal({ children, className, delay = 0, id }: RevealProps) {
   const reduceMotion = useReducedMotion()
 
@@ -23,10 +30,10 @@ export function Reveal({ children, className, delay = 0, id }: RevealProps) {
     <motion.div
       className={className}
       id={id}
-      initial={{ opacity: 0, y: 28, scale: 0.992 }}
-      transition={{ duration: 0.82, delay, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, margin: "-12% 0px -10%" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={revealInitial}
+      transition={{ duration: 0.82, delay, ease: revealEase }}
+      viewport={revealViewport}
+      whileInView={revealWhileInView}
     >
       {children}
     </motion.div>

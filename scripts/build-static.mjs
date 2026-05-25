@@ -90,6 +90,12 @@ buildNotes({ root, distDir, buildVersion })
 function collectSourceFiles(directory) {
   return readdirSync(directory)
     .flatMap((entry) => {
+      // macOS AppleDouble sidecar files (`._foo.ts`) appear on non-HFS+ drives
+      // and look like real sources to a glob — strip them up front.
+      if (entry.startsWith("._")) {
+        return []
+      }
+
       const fullPath = path.join(directory, entry)
       const stat = statSync(fullPath)
 

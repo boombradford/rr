@@ -50,6 +50,13 @@
         "displayName": "Studio Clay",
         "canonical": "oklch(73% 0.066 38)",
         "tonalRamp": ["oklch(17% 0.026 38)", "oklch(28% 0.04 38)", "oklch(40% 0.055 38)", "oklch(52% 0.066 38)", "oklch(64% 0.07 38)", "oklch(73% 0.066 38)", "oklch(85% 0.05 38)", "oklch(94% 0.026 38)"]
+      },
+      "coral-300": {
+        "role": "signature",
+        "scope": "brand-seal-only",
+        "displayName": "Soft Coral",
+        "canonical": "oklch(75% 0.12 25)",
+        "tonalRamp": ["oklch(18% 0.04 25)", "oklch(30% 0.07 25)", "oklch(42% 0.1 25)", "oklch(54% 0.12 25)", "oklch(65% 0.13 25)", "oklch(75% 0.12 25)", "oklch(86% 0.085 25)", "oklch(94% 0.045 25)"]
       }
     },
     "typographyMeta": {
@@ -146,6 +153,7 @@
     ],
     "rules": [
       { "name": "The Four-Lane Rule", "body": "Sage, brass, signal cyan, and clay each own one domain (archive / video / code-and-news / music). They are never swapped or blended decoratively. A project's tone and its studio lane's tone always agree.", "section": "colors" },
+      { "name": "The Signature Seal Rule", "body": "Soft Coral is a Signature Color, not a palette member. It appears only inside the brand seal (the Aurora Orb's conic gradient and the orbit dot glow), and nowhere else: not in text, surfaces, borders, focus rings, project tones, lane tones, or hover states. The Four-Lane Rule stays intact because coral is outside the lane system.", "section": "colors" },
       { "name": "The No-Pure-Black Rule", "body": "#000 and #fff are forbidden. Every neutral is tinted toward ink hue 238 or paper hue 83; every highlight and shadow is a color-mix against foreground or scrim, never a raw white or black.", "section": "colors" },
       { "name": "The Mono-Label Rule", "body": "The monospace voice is reserved for small uppercase labels, kickers, project metadata, and technical detail lines. It never sets body copy and never sets a heading.", "section": "typography" },
       { "name": "The Tight-Display Rule", "body": "Large display type carries negative tracking (-0.02em on the hero word, -0.015em on headlines); small uppercase labels carry positive tracking (+0.06em). Tracking is always deliberate, never left at a no-op default.", "section": "typography" },

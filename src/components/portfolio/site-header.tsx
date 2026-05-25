@@ -6,13 +6,14 @@ export function SiteHeader() {
       <nav className="site-container nav-shell" aria-label="Primary navigation">
         <a className="brand-link" href="#top" aria-label="Portfolio home">
           <span className="brand-seal" aria-hidden="true">
-            <span className="brand-shape" />
+            <span className="brand-orb" />
+            <span className="brand-orbit">
+              <span className="brand-orbit-dot" />
+            </span>
           </span>
           <span className="brand-copy" translate="no">
-            <span>
-              zach <span className="brand-divider" aria-hidden="true">|</span> skov
-            </span>
-            <span>grzeskowiak</span>
+            <span>Zach Skov</span>
+            <span>Grzeskowiak — Studio</span>
           </span>
         </a>
 

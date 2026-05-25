@@ -24,7 +24,10 @@ export function buildNotes({ root, distDir, buildVersion }) {
     return
   }
 
-  const files = readdirSync(notesDir).filter((f) => f.endsWith(".md"))
+  const files = readdirSync(notesDir).filter(
+    // Skip macOS AppleDouble sidecars (`._foo.md`) that appear on non-HFS+ drives.
+    (f) => f.endsWith(".md") && !f.startsWith("._"),
+  )
   const posts = files
     .map((file) => parsePost(path.join(notesDir, file), file.replace(/\.md$/, "")))
     .sort((a, b) => b.dateValue - a.dateValue)
@@ -130,11 +133,12 @@ function renderHeader() {
         <nav class="site-container nav-shell" aria-label="Primary navigation">
           <a class="brand-link" href="/" aria-label="Portfolio home">
             <span class="brand-seal" aria-hidden="true">
-              <span class="brand-shape"></span>
+              <span class="brand-orb"></span>
+              <span class="brand-orbit"><span class="brand-orbit-dot"></span></span>
             </span>
             <span class="brand-copy" translate="no">
-              <span>zach <span class="brand-divider" aria-hidden="true">|</span> skov</span>
-              <span>grzeskowiak</span>
+              <span>Zach Skov</span>
+              <span>Grzeskowiak — Studio</span>
             </span>
           </a>
           <div class="nav-actions">

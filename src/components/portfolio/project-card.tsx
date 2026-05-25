@@ -14,15 +14,18 @@ type ProjectCardProps = {
   project: Project
 }
 
+// Hoisted: identical across every card, recreating it per render churns memory
+// and keeps the inline-style branch from being CSS-cacheable.
+const pointerStyle = {
+  "--pointer-x": "50%",
+  "--pointer-y": "50%",
+} as CSSProperties
+
 export function ProjectCard({ index, project }: ProjectCardProps) {
   const projectNumber = String(index + 1).padStart(2, "0")
   const isWide = project.feature === "wide"
   const reduceMotion = useReducedMotion()
   const [imageBroken, setImageBroken] = useState(false)
-  const pointerStyle = {
-    "--pointer-x": "50%",
-    "--pointer-y": "50%",
-  } as CSSProperties
 
   function handlePointerMove(event: PointerEvent<HTMLAnchorElement>) {
     if (reduceMotion) {
@@ -69,7 +72,6 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
               </Badge>
             </div>
             <div className={`project-media ${project.image.className}`}>
-              <span className="project-media__scan" />
               {imageBroken ? null : (
                 <img
                   alt={project.image.alt}
@@ -87,26 +89,29 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
           </CardHeader>
           <CardContent>
             <div className="project-meta">
-              {[project.status, project.year].map((item) => (
-                <Badge className="project-meta-badge" key={item} variant="label">
-                  {item}
-                </Badge>
-              ))}
+              <Badge className="project-status" data-status={project.status} variant="label">
+                <span className="project-status__dot" aria-hidden="true" />
+                {project.status}
+              </Badge>
+              <span className="project-meta-sep" aria-hidden="true" />
+              <Badge className="project-year" variant="label">
+                {project.year}
+              </Badge>
             </div>
             <p className="project-context">
-              {project.category} / {project.scope}
+              {project.category} · {project.scope}
             </p>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription className="project-description">
               {project.description}
             </CardDescription>
-            <div className="project-tags" aria-label={`${project.title} tags`}>
+            <ul className="project-tags" aria-label={`${project.title} tags`}>
               {project.tags.map((tag) => (
-                <Badge className="project-tag" key={tag} variant="label">
+                <li className="project-tag" key={tag}>
                   {tag}
-                </Badge>
+                </li>
               ))}
-            </div>
+            </ul>
           </CardContent>
           <CardFooter>
             <span>{project.cta}</span>

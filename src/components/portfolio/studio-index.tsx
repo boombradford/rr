@@ -50,6 +50,7 @@ export function StudioIndex() {
             >
               <a className={`studio-index-item studio-index-item--${lane.key}`} href={lane.href}>
                 <div className="studio-index-item__header">
+                  <span className="studio-index-dot" aria-hidden="true" />
                   <span className="studio-index-label">{lane.label}</span>
                 </div>
                 <div className="studio-index-item__content">

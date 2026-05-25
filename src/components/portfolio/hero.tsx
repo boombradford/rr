@@ -6,12 +6,20 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion"
-import { type PointerEvent, useEffect, useState } from "react"
+import { type CSSProperties, type PointerEvent, useEffect, useState } from "react"
 import { ArrowRightIcon } from "lucide-react"
 
 import { Reveal } from "./reveal"
 
-const heroRoles = ["AI ENGINEER", "FILM EDITOR", "PRODUCT DESIGNER", "RESEARCHER"]
+// Each role borrows from the Four-Lane palette so the hero, the studio index,
+// and the project cards share one visual vocabulary. Coral is intentionally
+// excluded — DESIGN.md reserves it as the Signature color of the brand seal.
+const heroRoles = [
+  { label: "AI ENGINEER", tone: "var(--color-signal-300)" },
+  { label: "FILM EDITOR", tone: "var(--color-brass-300)" },
+  { label: "PRODUCT DESIGNER", tone: "var(--color-clay-300)" },
+  { label: "RESEARCHER", tone: "var(--color-sage-300)" },
+] as const
 const roleCycleDelay = 4200
 const roleTransition = { duration: 1.05, ease: [0.22, 1, 0.36, 1] } as const
 
@@ -91,12 +99,6 @@ function HeroStudioPlate({ reduceMotion }: HeroStudioPlateProps) {
     >
       <HeroVideoLayer reduceMotion={reduceMotion} />
       <span className="hero-depth-field hero-depth-field--one" />
-      <span className="hero-frame-line hero-frame-line--top" />
-      <span className="hero-frame-line hero-frame-line--bottom" />
-      <span className="hero-corner-mark hero-corner-mark--top-left" />
-      <span className="hero-corner-mark hero-corner-mark--top-right" />
-      <span className="hero-corner-mark hero-corner-mark--bottom-left" />
-      <span className="hero-corner-mark hero-corner-mark--bottom-right" />
       <motion.div className="hero-title-plane" style={reduceMotion ? undefined : { x: titleX, y: titleY }}>
         <HeroRoleCycle reduceMotion={reduceMotion} />
       </motion.div>
@@ -159,7 +161,8 @@ function HeroRoleCycle({ reduceMotion }: HeroStudioPlateProps) {
           className="hero-word"
           exit="exit"
           initial="hidden"
-          key={activeRole}
+          key={activeRole.label}
+          style={{ "--role-tone": activeRole.tone } as CSSProperties}
           transition={roleTransition}
           variants={{
             hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
@@ -167,11 +170,11 @@ function HeroRoleCycle({ reduceMotion }: HeroStudioPlateProps) {
             exit: { opacity: 0, y: -18, filter: "blur(7px)" },
           }}
         >
-          {activeRole.split("").map((letter, index) => (
+          {activeRole.label.split("").map((letter, index) => (
             <motion.span
               aria-hidden="true"
               className="hero-letter"
-              key={`${activeRole}-${letter}-${index}`}
+              key={`${activeRole.label}-${letter}-${index}`}
               transition={{
                 delay: reduceMotion ? 0 : index * 0.018,
                 duration: 0.72,

@@ -12,6 +12,7 @@ colors:
   brass-300: "oklch(76% 0.083 83)"
   signal-300: "oklch(76.5% 0.078 206)"
   clay-300: "oklch(73% 0.066 38)"
+  coral-300: "oklch(75% 0.12 25)"
   muted-foreground: "oklch(68% 0.016 83)"
   border: "oklch(19% 0.012 238)"
 typography:
@@ -113,6 +114,9 @@ A restrained, systemized palette: tinted near-black neutrals carry the surface, 
 ### Quaternary
 - **Studio Clay** (`oklch(73% 0.066 38)`): Analog warmth. The Music studio lane, WaveReact's project tone, vinyl-crate register. A muted clay, never a saturated terracotta.
 
+### Signature
+- **Soft Coral** (`oklch(75% 0.12 25)`): The Signature Color. Reserved exclusively for the brand seal's Aurora Orb in the site header. Warmer and slightly more saturated than the Four-Lane accents on purpose, it is the one small color splash that signs the page. It is **not** a Four-Lane palette member and never appears on surfaces, text, borders, focus rings, project tones, lane tones, or hover states.
+
 ### Neutral
 - **Darkroom Ink** (`oklch(5.1% 0.009 238)`): The base background. A near-black tinted toward cool ink, never pure black.
 - **Plate Ink** (`oklch(9.4% 0.012 238)`): Card and panel surface, one tonal step above the base.
@@ -124,6 +128,8 @@ A restrained, systemized palette: tinted near-black neutrals carry the surface, 
 **The Four-Lane Rule.** Sage, brass, signal cyan, and clay each own one domain (archive / video / code-and-news / music). They are never swapped or blended decoratively. A project's `--project-tone` and its studio lane's `--lane-tone` always agree.
 
 **The No-Pure-Black Rule.** `#000` and `#fff` are forbidden. Every neutral is tinted toward ink hue 238 or paper hue 83; every highlight and shadow is a `color-mix` against `--foreground` or `--scrim`, never a raw white or black.
+
+**The Signature Seal Rule.** Soft Coral is a Signature Color, not a palette member. It appears only inside the `.brand-seal` (the Aurora Orb's conic gradient and the orbit dot glow), and nowhere else: not in text, surfaces, borders, focus rings, project tones, lane tones, or hover states. The Four-Lane Rule stays intact because coral is outside the lane system.
 
 ## 3. Typography
 

@@ -25,6 +25,8 @@
   --color-brass-300: oklch(76% 0.083 83);
   --color-signal-300: oklch(76.5% 0.078 206);
   --color-clay-300: oklch(73% 0.066 38);
+  --color-coral-300: oklch(75% 0.12 25);
+  --seal-coral: var(--color-coral-300);
 
   --color-background: var(--color-ink-950);
   --color-foreground: var(--color-paper-100);
@@ -535,6 +537,9 @@ button:not(:disabled),
 }
 
 .brand-seal {
+  --seal-inset: 5px;
+  --orbit-inset: 3px;
+
   align-items: center;
   background: color-mix(in oklch, var(--surface-0) 82%, var(--accent) 18%);
   border: 1px solid color-mix(in oklch, var(--foreground) 8%, var(--accent) 12%);
@@ -547,6 +552,7 @@ button:not(:disabled),
   flex-shrink: 0;
   height: 2.7rem;
   justify-content: center;
+  overflow: hidden;
   position: relative;
   transition:
     border-color var(--duration-fast) var(--motion-ease),
@@ -555,22 +561,56 @@ button:not(:disabled),
   width: 2.7rem;
 }
 
-.brand-shape {
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in oklch, var(--foreground) 56%, var(--accent-secondary) 14%);
-  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-  display: block;
-  height: 0.82rem;
-  opacity: 0.78;
-  transform: rotate(0deg) scale(1);
-  animation: brand-shape-rotate 18s linear infinite;
-  animation-play-state: paused;
-  transform-origin: center;
+.brand-orb {
+  animation: brand-orb-rotate 32s linear infinite;
+  background: conic-gradient(
+    from 0deg,
+    var(--seal-coral) 0deg,
+    var(--color-brass-300) 90deg,
+    var(--color-sage-300) 180deg,
+    var(--color-signal-300) 270deg,
+    var(--seal-coral) 360deg
+  );
+  border-radius: 999px;
+  filter: saturate(0.92) brightness(0.92);
+  inset: var(--seal-inset);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, var(--scrim) 58%, transparent 100%);
+  mask-image: radial-gradient(circle at 50% 50%, var(--scrim) 58%, transparent 100%);
+  opacity: 0.86;
+  position: absolute;
+  transform: rotate(0deg);
+  transform-origin: 50% 50%;
+  transition:
+    filter var(--duration-fast) var(--motion-ease),
+    opacity var(--duration-fast) var(--motion-ease);
   will-change: transform;
 }
 
-.brand-link:hover .brand-shape {
-  animation-play-state: running;
+.brand-orbit {
+  animation: brand-orbit-spin 11s linear infinite;
+  animation-direction: reverse;
+  border-radius: 999px;
+  inset: var(--orbit-inset);
+  pointer-events: none;
+  position: absolute;
+  transform: rotate(0deg);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.brand-orbit-dot {
+  background: color-mix(in oklch, var(--foreground) 88%, var(--seal-coral) 12%);
+  border-radius: 999px;
+  box-shadow: 0 0 6px color-mix(in oklch, var(--seal-coral) 55%, transparent);
+  height: 3px;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  transition:
+    background var(--duration-fast) var(--motion-ease),
+    box-shadow var(--duration-fast) var(--motion-ease);
+  width: 3px;
 }
 
 .brand-copy {
@@ -600,11 +640,6 @@ button:not(:disabled),
   white-space: nowrap;
 }
 
-.brand-divider {
-  color: color-mix(in oklch, var(--muted-foreground) 66%, transparent);
-  margin-inline: 0.28rem;
-}
-
 .brand-link:hover {
   opacity: 0.95;
   transform: translateY(-1px);
@@ -616,9 +651,14 @@ button:not(:disabled),
   color: var(--foreground);
 }
 
-.brand-link:hover .brand-shape {
-  border-color: color-mix(in oklch, var(--foreground) 70%, var(--accent-secondary) 30%);
-  opacity: 0.95;
+.brand-link:hover .brand-orb {
+  filter: saturate(1) brightness(1);
+  opacity: 1;
+}
+
+.brand-link:hover .brand-orbit-dot {
+  background: color-mix(in oklch, var(--foreground) 70%, var(--seal-coral) 30%);
+  box-shadow: 0 0 8px color-mix(in oklch, var(--seal-coral) 72%, transparent);
 }
 
 .nav-actions {
@@ -881,63 +921,6 @@ button:not(:disabled),
     radial-gradient(ellipse at 68% 48%, color-mix(in oklch, var(--accent-secondary) 5%, transparent), transparent 18rem);
 }
 
-.hero-frame-line {
-  background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--foreground) 18%, transparent), transparent);
-  height: 1px;
-  left: clamp(1.2rem, 4vw, 3.4rem);
-  opacity: 0.5;
-  pointer-events: none;
-  position: absolute;
-  right: clamp(1.2rem, 4vw, 3.4rem);
-  z-index: 5;
-}
-
-.hero-frame-line--top {
-  top: clamp(1rem, 2.6vw, 2rem);
-}
-
-.hero-frame-line--bottom {
-  bottom: clamp(1rem, 2.6vw, 2rem);
-}
-
-.hero-corner-mark {
-  border-color: color-mix(in oklch, var(--foreground) 20%, transparent);
-  height: clamp(1rem, 2vw, 1.55rem);
-  opacity: 0.52;
-  pointer-events: none;
-  position: absolute;
-  width: clamp(1rem, 2vw, 1.55rem);
-  z-index: 5;
-}
-
-.hero-corner-mark--top-left {
-  border-left: 1px solid;
-  border-top: 1px solid;
-  left: clamp(1rem, 2.6vw, 1.8rem);
-  top: clamp(1rem, 2.6vw, 1.8rem);
-}
-
-.hero-corner-mark--top-right {
-  border-right: 1px solid;
-  border-top: 1px solid;
-  right: clamp(1rem, 2.6vw, 1.8rem);
-  top: clamp(1rem, 2.6vw, 1.8rem);
-}
-
-.hero-corner-mark--bottom-left {
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  bottom: clamp(1rem, 2.6vw, 1.8rem);
-  left: clamp(1rem, 2.6vw, 1.8rem);
-}
-
-.hero-corner-mark--bottom-right {
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-  bottom: clamp(1rem, 2.6vw, 1.8rem);
-  right: clamp(1rem, 2.6vw, 1.8rem);
-}
-
 .hero-title-plane {
   inset: 0;
   pointer-events: none;
@@ -959,7 +942,9 @@ button:not(:disabled),
 }
 
 .hero-word {
-  color: color-mix(in oklch, var(--foreground) 86%, transparent);
+  --role-tone: var(--accent);
+
+  color: color-mix(in oklch, var(--foreground) 78%, var(--role-tone) 22%);
   font-size: clamp(2.12rem, 5.35vw, var(--type-hero-word));
   font-weight: 760;
   grid-area: 1 / 1;
@@ -969,7 +954,8 @@ button:not(:disabled),
   text-align: center;
   text-shadow:
     0 1.2rem 3.6rem color-mix(in oklch, var(--scrim) 58%, transparent),
-    0 0 2rem color-mix(in oklch, var(--foreground) 5%, transparent);
+    0 0 2.2rem color-mix(in oklch, var(--role-tone) 26%, transparent);
+  transition: color var(--duration-med) var(--motion-ease);
   white-space: nowrap;
 }
 
@@ -989,15 +975,28 @@ button:not(:disabled),
 }
 
 .section-kicker {
-  color: var(--text-faint);
+  align-items: center;
+  color: color-mix(in oklch, var(--accent-secondary) 78%, var(--foreground) 22%);
+  display: inline-flex;
   font-family: var(--font-data);
   font-size: var(--type-label-sm);
   font-weight: 620;
   font-variant-numeric: tabular-nums;
+  gap: 0.55rem;
   letter-spacing: 0.06em;
   line-height: 1.2;
   margin: 0;
   text-transform: uppercase;
+}
+
+.section-kicker::before {
+  background: color-mix(in oklch, var(--accent-secondary) 72%, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0 8px color-mix(in oklch, var(--accent-secondary) 38%, transparent);
+  content: "";
+  display: inline-block;
+  height: 0.42rem;
+  width: 0.42rem;
 }
 
 .section-heading__title {
@@ -1052,36 +1051,37 @@ button:not(:disabled),
   position: relative;
   text-decoration: none;
   transition:
+    background var(--duration-med) var(--motion-ease),
     color var(--duration-med) var(--motion-ease);
 }
 
-.studio-index-item::before {
-  background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--lane-tone) 32%, transparent), transparent);
-  content: "";
-  height: 1px;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate3d(-60%, 0, 0);
-  transition:
-    opacity var(--duration-med) var(--motion-ease),
-    transform var(--duration-slow) var(--motion-ease);
-}
-
-.studio-index-item:hover::before {
-  opacity: 1;
-  transform: translate3d(60%, 0, 0);
+.studio-index-item:hover {
+  background: linear-gradient(180deg, color-mix(in oklch, var(--lane-tone) 6%, transparent), transparent);
 }
 
 .studio-index-item__header {
-  gap: 0;
+  align-items: center;
+  display: flex;
+  gap: 0.55rem;
   padding: 0;
 }
 
+.studio-index-dot {
+  background: var(--lane-tone);
+  border-radius: 999px;
+  box-shadow: 0 0 10px color-mix(in oklch, var(--lane-tone) 50%, transparent);
+  display: inline-block;
+  height: 0.46rem;
+  transition: transform var(--duration-fast) var(--motion-ease);
+  width: 0.46rem;
+}
+
+.studio-index-item:hover .studio-index-dot {
+  transform: scale(1.18);
+}
+
 .studio-index-label {
-  color: color-mix(in oklch, var(--foreground) 82%, var(--lane-tone) 18%);
+  color: color-mix(in oklch, var(--foreground) 74%, var(--lane-tone) 26%);
   display: inline-block;
   font-family: var(--font-data);
   font-size: var(--type-label-sm);
@@ -1090,6 +1090,11 @@ button:not(:disabled),
   letter-spacing: 0.06em;
   line-height: 1.1;
   text-transform: uppercase;
+  transition: color var(--duration-fast) var(--motion-ease);
+}
+
+.studio-index-item:hover .studio-index-label {
+  color: color-mix(in oklch, var(--foreground) 56%, var(--lane-tone) 44%);
 }
 
 .studio-index-item__content {
@@ -1105,17 +1110,22 @@ button:not(:disabled),
 }
 
 .studio-index-meter {
-  background: linear-gradient(90deg, color-mix(in oklch, var(--lane-tone) 72%, var(--foreground) 8%), transparent);
+  background: linear-gradient(90deg, var(--lane-tone), transparent);
   display: block;
-  height: 1px;
+  height: 2px;
   margin-top: 1rem;
-  opacity: 0.2;
+  opacity: 0.32;
   transform: scaleX(0.36);
   transform-origin: left;
   transition:
     opacity var(--duration-med) var(--motion-ease),
     transform var(--duration-slow) var(--motion-ease-out);
   width: min(7rem, 70%);
+}
+
+.studio-index-item:hover .studio-index-meter {
+  opacity: 0.85;
+  transform: scaleX(1);
 }
 
 .studio-index-item--code {
@@ -1134,10 +1144,6 @@ button:not(:disabled),
   --lane-tone: var(--accent);
 }
 
-.studio-index-item:hover .studio-index-meter {
-  opacity: 0.72;
-  transform: scaleX(1);
-}
 
 /* Work */
 .work-section {
@@ -1160,11 +1166,12 @@ button:not(:disabled),
 
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--foreground) 3%, transparent), transparent),
-    color-mix(in oklch, var(--surface-0) 92%, var(--project-tone) 8%);
-  border: 1px solid color-mix(in oklch, var(--foreground) 4.8%, var(--project-tone) 5.2%);
+    color-mix(in oklch, var(--surface-0) 86%, var(--project-tone) 14%);
+  border: 1px solid color-mix(in oklch, var(--foreground) 4.8%, var(--project-tone) 12%);
   border-radius: calc(var(--radius-xl) + 0.45rem);
   box-shadow:
     0 24px 80px color-mix(in oklch, var(--scrim) 18%, transparent),
+    0 0 0 1px color-mix(in oklch, var(--project-tone) 6%, transparent),
     inset 0 1px 0 color-mix(in oklch, var(--foreground) 4.5%, transparent);
   display: flex;
   grid-column: span 3;
@@ -1198,9 +1205,9 @@ button:not(:disabled),
 
 .project-card {
   background:
-    radial-gradient(circle at 18% 0%, color-mix(in oklch, var(--project-tone) 5%, transparent), transparent 18rem),
+    radial-gradient(circle at 18% 0%, color-mix(in oklch, var(--project-tone) 10%, transparent), transparent 22rem),
     var(--surface-1);
-  border-color: color-mix(in oklch, var(--line-hair) 76%, var(--project-tone) 24%);
+  border-color: color-mix(in oklch, var(--line-hair) 60%, var(--project-tone) 40%);
   border-radius: var(--radius-xl);
   min-height: 100%;
   overflow: hidden;
@@ -1211,22 +1218,6 @@ button:not(:disabled),
     background var(--duration-med) var(--motion-ease);
   transform-origin: center;
   width: 100%;
-}
-
-.project-card::before {
-  background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--foreground) 11%, transparent), transparent);
-  content: "";
-  height: 1px;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate3d(-72%, 0, 0);
-  transition:
-    opacity var(--duration-med) var(--motion-ease),
-    transform 900ms var(--motion-ease-out);
-  z-index: 2;
 }
 
 .project-card::after {
@@ -1280,11 +1271,6 @@ button:not(:disabled),
   opacity: 0.78;
 }
 
-.project-card:hover::before {
-  opacity: 0.8;
-  transform: translate3d(72%, 0, 0);
-}
-
 .project-card .ui-card-header {
   gap: 0.85rem;
   position: relative;
@@ -1311,13 +1297,14 @@ button:not(:disabled),
 }
 
 .project-meta {
+  gap: 0.55rem;
   justify-content: flex-start;
   margin-bottom: 0.72rem;
 }
 
 .project-index.ui-badge,
-.project-meta-badge.ui-badge,
-.project-tag.ui-badge,
+.project-status.ui-badge,
+.project-year.ui-badge,
 .project-lane.ui-badge {
   color: var(--text-faint);
   font-family: var(--font-data);
@@ -1325,18 +1312,60 @@ button:not(:disabled),
   letter-spacing: normal;
 }
 
-.project-card:hover .project-lane.ui-badge {
-  color: color-mix(in oklch, var(--project-tone) 70%, var(--foreground));
+.project-lane.ui-badge {
+  background: color-mix(in oklch, var(--project-tone) 14%, transparent);
+  border-color: color-mix(in oklch, var(--project-tone) 28%, transparent);
+  color: color-mix(in oklch, var(--project-tone) 68%, var(--foreground) 32%);
+  padding: 0.38rem 0.55rem;
+  transition:
+    background var(--duration-med) var(--motion-ease),
+    border-color var(--duration-med) var(--motion-ease),
+    color var(--duration-med) var(--motion-ease);
 }
 
-.project-meta-badge.ui-badge {
+.project-card:hover .project-lane.ui-badge {
+  background: color-mix(in oklch, var(--project-tone) 22%, transparent);
+  border-color: color-mix(in oklch, var(--project-tone) 42%, transparent);
+  color: color-mix(in oklch, var(--project-tone) 82%, var(--foreground) 18%);
+}
+
+.project-status.ui-badge,
+.project-year.ui-badge {
   font-size: var(--type-label-xs);
 }
 
-.project-meta-badge + .project-meta-badge::before {
-  color: color-mix(in srgb, var(--foreground) 18%, transparent);
-  content: "/";
-  margin-right: 0.7rem;
+.project-status.ui-badge {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.42rem;
+  padding-left: 0.42rem;
+}
+
+.project-status__dot {
+  background: var(--color-sage-300);
+  border-radius: 999px;
+  box-shadow: 0 0 8px color-mix(in oklch, var(--color-sage-300) 50%, transparent);
+  display: inline-block;
+  height: 0.42rem;
+  width: 0.42rem;
+}
+
+.project-status[data-status="Live"] .project-status__dot {
+  animation: project-status-pulse 2.6s var(--motion-ease) infinite;
+  background: var(--color-sage-300);
+  box-shadow: 0 0 8px color-mix(in oklch, var(--color-sage-300) 56%, transparent);
+}
+
+.project-status[data-status="Reel"] .project-status__dot {
+  background: var(--color-brass-300);
+  box-shadow: 0 0 8px color-mix(in oklch, var(--color-brass-300) 56%, transparent);
+}
+
+.project-meta-sep {
+  background: color-mix(in oklch, var(--foreground) 14%, transparent);
+  display: inline-block;
+  height: 0.7rem;
+  width: 1px;
 }
 
 .project-context {
@@ -1362,22 +1391,6 @@ button:not(:disabled),
   position: relative;
 }
 
-.project-media__scan {
-  background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--project-tone) 42%, var(--foreground) 8%), transparent);
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform: translate3d(-120%, 0, 0);
-  transition:
-    opacity var(--duration-med) var(--motion-ease),
-    transform 950ms var(--motion-ease-out);
-  width: 38%;
-  z-index: 2;
-}
-
 .project-media::after {
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--scrim) 0%, transparent), color-mix(in oklch, var(--scrim) 24%, transparent)),
@@ -1386,11 +1399,6 @@ button:not(:disabled),
   inset: 0;
   pointer-events: none;
   position: absolute;
-}
-
-.project-card:hover .project-media__scan {
-  opacity: 0.32;
-  transform: translate3d(310%, 0, 0);
 }
 
 .project-thumb {
@@ -1480,43 +1488,34 @@ button:not(:disabled),
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.58rem;
-  margin-top: 1.3rem;
+  gap: 0.42rem 0.5rem;
+  list-style: none;
+  margin: 1.3rem 0 0;
+  padding: 0;
 }
 
-.project-tags .ui-badge {
-  align-items: center;
-  color: var(--text-faint);
-  display: inline-flex;
+.project-tag {
+  background: color-mix(in oklch, var(--project-tone) 6%, transparent);
+  border: 1px solid color-mix(in oklch, var(--project-tone) 14%, transparent);
+  border-radius: 999px;
+  color: color-mix(in oklch, var(--text-faint) 88%, var(--project-tone) 12%);
+  font-family: var(--font-data);
   font-size: var(--type-label-xs);
   font-weight: 600;
-  gap: 0.58rem;
   letter-spacing: normal;
   line-height: 1.2;
+  padding: 0.32rem 0.6rem;
   text-transform: none;
   transition:
-    color var(--duration-fast) var(--motion-ease),
-    transform var(--duration-fast) var(--motion-ease);
+    background var(--duration-fast) var(--motion-ease),
+    border-color var(--duration-fast) var(--motion-ease),
+    color var(--duration-fast) var(--motion-ease);
 }
 
-.project-card:hover .project-tags .ui-badge {
-  color: color-mix(in oklch, var(--foreground) 58%, transparent);
-}
-
-.project-card:hover .project-tags .ui-badge:nth-child(2) {
-  transform: translate3d(0.12rem, 0, 0);
-}
-
-.project-card:hover .project-tags .ui-badge:nth-child(3) {
-  transform: translate3d(0.24rem, 0, 0);
-}
-
-.project-tags .ui-badge + .ui-badge::before {
-  background: var(--line-glint);
-  border-radius: 999px;
-  content: "";
-  height: 0.2rem;
-  width: 0.2rem;
+.project-card:hover .project-tag {
+  background: color-mix(in oklch, var(--project-tone) 12%, transparent);
+  border-color: color-mix(in oklch, var(--project-tone) 26%, transparent);
+  color: color-mix(in oklch, var(--foreground) 70%, var(--project-tone) 30%);
 }
 
 .project-card .ui-card-footer {
@@ -1552,16 +1551,28 @@ button:not(:disabled),
 }
 
 .footer-kicker {
-  color: color-mix(in oklch, var(--text-faint) 78%, var(--accent-secondary) 22%);
-  display: block;
+  align-items: center;
+  color: color-mix(in oklch, var(--accent-secondary) 78%, var(--foreground) 22%);
+  display: inline-flex;
   font-family: var(--font-data);
   font-size: var(--type-label-sm);
   font-variant-numeric: tabular-nums;
   font-weight: 650;
+  gap: 0.55rem;
   letter-spacing: 0.06em;
   line-height: 1.2;
   margin: 0;
   text-transform: uppercase;
+}
+
+.footer-kicker::before {
+  background: color-mix(in oklch, var(--accent-secondary) 72%, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0 8px color-mix(in oklch, var(--accent-secondary) 38%, transparent);
+  content: "";
+  display: inline-block;
+  height: 0.42rem;
+  width: 0.42rem;
 }
 
 .contact-title {
@@ -1629,14 +1640,16 @@ button:not(:disabled),
 .footer-link--primary.ui-button {
   background: color-mix(in oklch, var(--foreground) 91%, transparent);
   border-color: color-mix(in oklch, var(--foreground) 72%, transparent);
+  box-shadow: 0 18px 48px color-mix(in oklch, var(--accent-secondary) 18%, transparent);
   color: var(--background);
   min-height: 3.1rem;
   padding: 0.34rem 0.38rem 0.34rem 1rem;
 }
 
 .footer-link--primary.ui-button:hover {
-  background: color-mix(in oklch, var(--foreground) 91%, var(--accent-secondary) 9%);
-  border-color: color-mix(in oklch, var(--foreground) 88%, transparent);
+  background: color-mix(in oklch, var(--foreground) 88%, var(--accent-secondary) 22%);
+  border-color: color-mix(in oklch, var(--foreground) 78%, var(--accent-secondary) 12%);
+  box-shadow: 0 22px 60px color-mix(in oklch, var(--accent-secondary) 30%, transparent);
   color: var(--background);
 }
 
@@ -1976,17 +1989,28 @@ button:not(:disabled),
   }
 }
 
-@keyframes brand-shape-rotate {
-  0% {
-    transform: rotate(0deg) scale(1);
+@keyframes brand-orb-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes brand-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes project-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 
   50% {
-    transform: rotate(180deg) scale(0.92);
-  }
-
-  100% {
-    transform: rotate(360deg) scale(1);
+    opacity: 0.55;
+    transform: scale(0.82);
   }
 }
 
@@ -2054,12 +2078,10 @@ button:not(:disabled),
   }
 
   .brand-seal {
+    --seal-inset: 4px;
+    --orbit-inset: 2.5px;
     height: 2.18rem;
     width: 2.18rem;
-  }
-
-  .brand-shape {
-    height: 0.72rem;
   }
 
   .brand-copy span:first-child {
@@ -2069,10 +2091,6 @@ button:not(:disabled),
   .brand-copy span:last-child {
     font-size: var(--type-label-xs);
     letter-spacing: normal;
-  }
-
-  .brand-divider {
-    margin-inline: 0.18rem;
   }
 
   .studio-index-item {
@@ -2120,10 +2138,6 @@ button:not(:disabled),
     gap: 0.52rem;
   }
 
-  .project-meta-badge + .project-meta-badge::before {
-    margin-right: 0.52rem;
-  }
-
   .footer-link--primary.ui-button {
     width: 100%;
   }
@@ -2139,9 +2153,15 @@ button:not(:disabled),
     transition-duration: 1ms !important;
   }
 
-  .brand-shape {
+  .brand-orb {
     animation: none;
-    transform: none;
+    transform: rotate(15deg);
+    will-change: auto;
+  }
+
+  .brand-orbit {
+    animation: none;
+    transform: rotate(-35deg);
     will-change: auto;
   }
 

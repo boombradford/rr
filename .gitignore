@@ -13,10 +13,12 @@ dist-ssr
 
 # Editor and OS files
 .DS_Store
+._*
 .vscode/*
 !.vscode/extensions.json
 .idea
 .vercel
+.claude/
 
 # Local scratch and design-iteration artifacts
 output
